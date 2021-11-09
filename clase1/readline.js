@@ -10,5 +10,5 @@ rl.question("Cual es su nombre? ",function(answer){
 })
 
 function procesarNombre(nombre){
-    console.log("Mucho gusto, " + nombre)
+    console.log("Mucho gusto, Hola! " + nombre)
 }
