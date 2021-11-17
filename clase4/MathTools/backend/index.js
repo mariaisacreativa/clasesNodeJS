@@ -1,7 +1,7 @@
 const http = require("http")
+const {readFile, writeFile, appendFile} = require("fs")
 const { calcularAreaCilindro, calcularAreaEsfera } = require("./helpers/areas")
 const colors = require("colors")
-
 
 const port = 8080
 const ip = "localhost" //localhost = 127.0.0.1; dispositivos conectados a la misma red wifi, necesitamos ver la ip de nuestro en la LAN inalambrica (192.168.1.184)
@@ -26,6 +26,23 @@ http.createServer(function (request, response) {
             response.write(`El resultado del area de la esfera es: ${calcularAreaEsfera(ra)}`)
             break;
         case '/cubo':
+            break;
+        case '/fileSystem':
+
+            /*appendFile("./files/test.txt", "!!!!Esto va despues del text añadido -- " +new Date() + "\n",(err)=>{
+                if(err) throw err
+                console.log("Se añadió al archivo")
+            })*/
+
+            /*writeFile("./files/test.txt", "text añadido",(err)=>{
+                if(err) throw err
+                console.log("Se guardó el archivo correctamente!")
+            })
+
+            readFile("./files/test.txt","utf-8",(err, data)=>{
+                if(err) throw err
+                console.log(data)
+            });*/
 
             break;
         default:
