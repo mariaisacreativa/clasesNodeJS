@@ -6,7 +6,7 @@ const hacerPeticion = () => {
     let result = document.getElementById("result");
 
     if (radio && altura) {
-        fetch(`http://localhost:8080/cilindro?r=${radio}&h=${altura}`)
+        fetch(`http://localhost:8080/cilindro?r=${radio}&h=${altura}`,{method:"GET"})
             .then(response => response.json())
             .then(data => {
                 console.log(data)

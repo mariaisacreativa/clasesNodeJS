@@ -1,5 +1,5 @@
 const http = require("http")
-const {readFile, writeFile, appendFile} = require("fs")
+const registros = require("./helpers/files")
 const { calcularAreaCilindro, calcularAreaEsfera } = require("./helpers/areas")
 const colors = require("colors")
 
@@ -16,34 +16,24 @@ http.createServer(function (request, response) {
             const h = (incomingUrl.searchParams.get('h'))
             let area = calcularAreaCilindro(r, h)
             if (area) {
-                response.write(JSON.stringify({area}))
+                let registrosJSON = JSON.parse(registros.leerRegistro("registroCilindro"))
+                console.log(registrosJSON)
+                registrosJSON.push({ area, "date": new Date() })
+                registros.guardarRegistro(JSON.stringify(registrosJSON), "registroCilindro")
+                response.write(JSON.stringify({ area }))
             } else {
                 response.write("error")
             }
             break;
         case '/esfera':
-            const ra = (incomingUrl.searchParams.get('radio'))
-            response.write(`El resultado del area de la esfera es: ${calcularAreaEsfera(ra)}`)
             break;
         case '/cubo':
             break;
-        case '/fileSystem':
-
-            /*appendFile("./files/test.txt", "!!!!Esto va despues del text añadido -- " +new Date() + "\n",(err)=>{
-                if(err) throw err
-                console.log("Se añadió al archivo")
-            })*/
-
-            /*writeFile("./files/test.txt", "text añadido",(err)=>{
-                if(err) throw err
-                console.log("Se guardó el archivo correctamente!")
-            })
-
-            readFile("./files/test.txt","utf-8",(err, data)=>{
-                if(err) throw err
-                console.log(data)
-            });*/
-
+        case '/consultarRegistrosCilindro':
+            response.write(registros.leerRegistro("registroCilindro"))
+            break;
+        case '/consultarRegistrosCubo':
+            response.write(registros.leerRegistro("registroCubo"))
             break;
         default:
             response.write("Esa ruta no existe")
