@@ -6,7 +6,6 @@ let calcularAreaEsfera = (radio) =>{
     return "formula"
 }
 
-
 module.exports = {
     calcularAreaCilindro,
     calcularAreaEsfera

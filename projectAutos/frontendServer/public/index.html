@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>Photon Vehicles</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper  grey darken-3">
+            <a href="#!" class="brand-logo">Vehiculos Photon</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="help.html"><i class="material-icons">question_mark</i></a></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <h1>Vehiculos Photon</h1>
+        <a class="btn modal-trigger" href="#modalLogin"><i class="material-icons right">directions_car</i>Ingresar</a>
+    </header>
+    <main>
+        <div id="modalLogin" class="modal grey darken-3">
+            <div class="modal-content">
+                <h4>Iniciar sesión</h4>
+                <p>Por favor introduce tus credenciales: </p>
+                <hr>
+                <br>
+                <div class="container">
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="mail" type="email" class="validate">
+                        <label for="mail">Usuario</label>
+                    </div>
+                    <div class="input-field ">
+                        <i class="material-icons prefix">key</i>
+                        <input id="pass" type="password" class="validate">
+                        <label for="pass">Contraseña</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer grey darken-3">
+                <a href="#" class="modal-close  waves-effect waves-green btn-flat">Cancelar</a>
+                <a href="" class="waves-effect waves-green btn-flat" onclick="">Iniciar</a>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="assets/js/initModal.js"></script>
+</body>
+
+</html>
