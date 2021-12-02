@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const connectionString = "mongodb+srv://test:1234@mongotest.bxaw0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const connectionString = "mongodb+srv://test:1234@mongotest.bxaw0.mongodb.net/guitarraVieja?retryWrites=true&w=majority"
 
 const connectDB = async () =>{
     try{
