@@ -7,6 +7,13 @@ const listAllGuitars = (req, res) => {
     })
 }
 
+const listAllBohemiaGuitars = (req, res)=>{
+    Guitarra.find({"marca":"Bohemia"},(err, guitarras) => {
+        if (err) return res.send(err)
+        return res.send(guitarras)
+    })
+}
+
 const saveGuitar = (req, res) => {
     let document = req.body;
     Guitarra.find({ "modelo": document.modelo, "marca": document.marca }, (err, guitarras) => {
@@ -53,10 +60,19 @@ const deleteGuitar = (req,res) => {
     })
 }
 
+const searchGuitarsByBranch = (req,res)=>{
+    Guitarra.find({"marca":req.query.marca},(err, guitarras) => {
+        if (err) return res.send(err)
+        return res.send(guitarras)
+    })
+}
+
 module.exports = {
     listAllGuitars,
     saveGuitar,
     updateGuitar,
     updatePriceGuitar,
-    deleteGuitar
+    deleteGuitar,
+    listAllBohemiaGuitars,
+    searchGuitarsByBranch
 }
