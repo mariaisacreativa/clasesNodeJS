@@ -13,11 +13,13 @@ const getAirQualityIndexFromThirdPartyService = () => {
                 /*obtener body del response*/
                 res.on("data", (chunk) => {
                     let dataJSON = JSON.parse(chunk)
-                    resolve(dataJSON);
+                    let dataLocalidades = dataJSON.data
+                    let dataDeMiLocalidad = dataLocalidades.find((localidad)=>{return localidad.uid == 6235})
+                    resolve(dataDeMiLocalidad);
                 });
             })
         } catch {
-            reject("Ocurrió en la obtención del body")
+            reject("Ocurrió error en la obtención del body")
         }
     }).then((data)=>{return data}).catch((err)=>{return err})
 }

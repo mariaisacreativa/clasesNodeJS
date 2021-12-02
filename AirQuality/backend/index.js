@@ -1,10 +1,11 @@
 const express = require('express')
+const cors = require('cors')
 const {getAirQualityIndexFromUSB, getAirQualityIndexFromThirdPartyService } = require('./helpers/airQualityIndexService')
 
 const app = express()
 const port = 3030
 
-app.get("/aqi", async (req,res)=>{
+app.get("/aqi",cors(),async (req,res)=>{
   res.send(
     {
       aqiFromUSB:getAirQualityIndexFromUSB(),

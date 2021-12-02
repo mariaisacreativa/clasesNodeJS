@@ -18,6 +18,4 @@ export class AqiService {
     return this.http.get(urlAPIAQI) //promesas
   }
 
-  
-
 }
