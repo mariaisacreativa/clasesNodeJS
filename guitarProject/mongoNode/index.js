@@ -9,6 +9,6 @@ app.use(express.json());
 app.use(cors());
 app.use('/guitarras',guitarras);
 
-app.listen(8080,()=>{
-    console.log("Estoy escuchando en el host: http://localhost:" + 8080);
+app.listen(3000,()=>{
+    console.log("Estoy escuchando en el host: http://localhost:" + 3000);
 });

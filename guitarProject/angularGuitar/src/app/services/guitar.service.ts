@@ -9,7 +9,11 @@ export class GuitarService {
   constructor(private httpClient: HttpClient) { }
 
   getAllGuitars(){
-    return this.httpClient.get("http://localhost:8080/guitarras/")
+    return this.httpClient.get("http://localhost:3000/guitarras/")
+  }
+
+  postCreateGuitar(guitar: any){
+    return this.httpClient.post("http://localhost:3000/guitarras/",guitar,{headers: {"Content-Type": "application/json"} })
   }
 
   getGuitarsByBranch(branch:string){

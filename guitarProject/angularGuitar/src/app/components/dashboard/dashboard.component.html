@@ -3,7 +3,9 @@
         <div class="card-body">
             <h5 class="card-title">Nuestras guitarras</h5>
             <hr>
-            <div class="d-flex flex-wrap justify-content-evenly">
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                data-bs-target="#createGuitar">Agregar Guitarra</button>
+            <div class="d-flex flex-wrap justify-content-evenly mt-5">
                 <div class="card border-info mb-3" style="max-width: 18rem;" *ngFor="let guitar of allGuitars">
                     <div class="card-header">{{guitar.marca + " - " + guitar.modelo}}</div>
                     <div class="card-body">
@@ -12,9 +14,52 @@
                         <p class="card-text">{{"Precio: " + guitar.precio}}</p>
                         <p class="card-text">{{"Stock: " + guitar.stock}}</p>
                     </div>
+                    <button>Eliminar</button>
                 </div>
             </div>
             <a class="btn btn-outline-primary" routerLink="">Ir al Home</a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createGuitar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Agregar Guitarra</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="guitar.tipo">
+                        <option selected>Seleccione el tipo</option>
+                        <option [value]="type" *ngFor="let type of this.typeGuitars">{{type}}</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Marca</span>
+                    <input [(ngModel)]="guitar.marca" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Modelo</span>
+                    <input [(ngModel)]="guitar.modelo" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Precio</span>
+                    <input [(ngModel)]="guitar.precio" type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Stock</span>
+                    <input [(ngModel)]="guitar.stock" type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+                </div>
+                <div id="alerta"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="closeModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="saveGuitar()">Guardar</button>
+            </div>
         </div>
     </div>
 </div>

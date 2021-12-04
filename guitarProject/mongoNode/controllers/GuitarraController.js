@@ -19,14 +19,14 @@ const saveGuitar = (req, res) => {
     Guitarra.find({ "modelo": document.modelo, "marca": document.marca }, (err, guitarras) => {
         if (err) return res.send(err);
         if (guitarras.length > 0) {
-            res.send("El documento ya existe!");
+            res.status(400).send({type:"error",msg:"El documento ya existe!"});
         } else {
             Guitarra.create(req.body).then((data) => {
                 console.log(data)
-                return res.send("Se creó el documento");
+                return res.status(200).send({type:"ok",msg:"Se creó el documento"});
             }).catch(err => {
                 console.log(err);
-                return res.send("upps!" + err);
+                return res.status(500).send({type:"error", msg: err});
             })
         }
     })
