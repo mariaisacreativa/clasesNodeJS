@@ -7,12 +7,16 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="" (click)="changeNavbarColor(true)">Home</a>
+            <a *ngIf="authService.estoyLogged()" class="nav-link" aria-current="page" routerLink="home" (click)="changeNavbarColor(true)" >Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="dashboard" (click)="changeNavbarColor(false)">Dashboard</a>
+            <a *ngIf="authService.estoyLogged()" class="nav-link" routerLink="dashboard" (click)="changeNavbarColor(false)">Dashboard</a>
           </li>
         </ul>
+        <div class="d-flex">
+          <button *ngIf="authService.estoyLogged()" class="btn btn-outline-success" (click)="authService.logoutUser()">Logout</button>
+          <button *ngIf="!authService.estoyLogged()" class="btn btn-outline-success" routerLink="">Login</button>
+        </div>
       </div>
     </div>
   </nav>

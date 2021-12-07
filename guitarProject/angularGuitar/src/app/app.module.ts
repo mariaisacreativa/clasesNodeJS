@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,9 @@ import { HomeComponent } from './components/home/home.component';
 import { VoidComponent } from './components/void/void.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guard/auth.guard';
+import { InterceptorService } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
     NavbarComponent,
     DashboardComponent,
     HomeComponent,
-    VoidComponent
+    VoidComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,13 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthGuard, 
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

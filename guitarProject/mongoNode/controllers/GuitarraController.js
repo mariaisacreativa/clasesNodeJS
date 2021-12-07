@@ -1,6 +1,7 @@
 const Guitarra = require("../models/Guitarra")
 
 const listAllGuitars = (req, res) => {
+    console.log(req.user)
     Guitarra.find((err, guitarras) => {
         if (err) return res.send(err)
         return res.send(guitarras)
